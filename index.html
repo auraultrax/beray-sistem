@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Öğretmen ve yönetici yoklama sistemi">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Yoklama Yönetim Sistemi</title>
+</head>
+<body>
+  <main class="app-shell">
+    <section id="welcomeView" class="view active">
+      <div class="hero">
+        <div class="logo">✓</div>
+        <div>
+          <div class="eyebrow">OKUL YÖNETİM PLATFORMU</div>
+          <h1>Yoklama Yönetim Sistemi</h1>
+          <p>Öğretmen ve yönetici işlemlerini tek bir profesyonel panelden yönetin.</p>
+        </div>
+      </div>
+      <div class="role-grid">
+        <button class="role-card" id="teacherEntry" type="button">
+          <span class="role-icon">👨‍🏫</span>
+          <strong>Öğretmen</strong>
+          <small>Sınıf, şube ve ders seçerek yoklama al.</small>
+        </button>
+        <button class="role-card" id="adminEntry" type="button">
+          <span class="role-icon">🛡️</span>
+          <strong>Yönetici</strong>
+          <small>Sisteme gir, öğretmenleri ve devamsızlıkları yönet.</small>
+        </button>
+      </div>
+      <div class="footer">PWA • Chrome üzerinden kurulabilir</div>
+    </section>
+
+    <section id="teacherView" class="view">
+      <header class="topbar">
+        <button class="back-btn" data-back type="button">← Geri</button>
+        <div><div class="eyebrow">ÖĞRETMEN PANELİ</div><h2 id="teacherPanelTitle">Öğretmen</h2></div>
+      </header>
+      <div class="grid">
+        <div class="card">
+          <div class="eyebrow">DERS VE SINIF</div>
+          <label>Öğretmen</label>
+          <select id="teacherSelect"><option value="">Öğretmen seç</option></select>
+          <label>Sınıf</label>
+          <select id="classSelect"><option value="">Sınıf seç</option><option value="5">5. Sınıf</option><option value="6">6. Sınıf</option><option value="7">7. Sınıf</option><option value="8">8. Sınıf</option></select>
+          <label>Şube</label>
+          <select id="sectionSelect"><option value="">Şube seç</option></select>
+          <label>Ders</label>
+          <select id="lessonSelect"><option value="">Ders seç</option></select>
+          <button class="primary" id="loadStudents" type="button">Öğrencileri Göster</button>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><div class="eyebrow">YOKLAMA</div><h3>Öğrenci Listesi</h3></div><span class="pill" id="summary">0 öğrenci</span></div>
+          <div id="studentList" class="list"><div class="empty">Önce seçimleri yap.</div></div>
+          <button class="primary" id="saveAttendance" disabled type="button">Yoklamayı Kaydet</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="adminView" class="view">
+      <header class="topbar">
+        <button class="back-btn" data-back type="button">← Geri</button>
+        <div><div class="eyebrow">YÖNETİCİ PANELİ</div><h2>Yönetim Merkezi</h2></div>
+      </header>
+      <div class="grid">
+        <div class="card">
+          <div class="eyebrow">ÖĞRETMEN EKLE</div>
+          <h3>Yeni öğretmen</h3>
+          <form id="teacherForm">
+            <input id="firstName" placeholder="Ad" autocomplete="given-name" required>
+            <input id="lastName" placeholder="Soyad" autocomplete="family-name" required>
+            <button class="primary" type="submit">Öğretmeni Ekle</button>
+          </form>
+          <div id="adminMessage" class="message"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><div class="eyebrow">KAYITLI ÖĞRETMENLER</div><h3>Öğretmenler</h3></div><span class="pill" id="teacherCount">0 kayıt</span></div>
+          <div id="teacherList" class="list"><div class="empty">Henüz öğretmen yok.</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><div class="eyebrow">DEVAMSIZLIK</div><h3>Son yokluk kayıtları</h3></div></div>
+        <div id="absenceList" class="list"><div class="empty">Henüz yoklama kaydı yok.</div></div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
