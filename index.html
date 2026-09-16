@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="Atatürk Ortaokulu Okul Yönetim Platformu">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<title>Atatürk Ortaokulu | Okul Yönetim Platformu</title>
+</head>
+<body>
+<div id="app" class="app-shell">
+  <section id="welcome" class="screen active">
+    <div class="welcome-wrap">
+      <div class="school-badge">AO</div>
+      <div class="eyebrow">ATATÜRK ORTAOKULU</div>
+      <h1>Okul Yönetim Platformu</h1>
+      <p class="lead">Yoklama, ders programı, öğretmen, öğrenci, sınıf ve okul yönetimini tek merkezde toplayın.</p>
+      <div class="role-grid">
+        <button class="role-card teacher-role" data-role="teacher"><span class="role-emoji">👨‍🏫</span><span class="role-title">Öğretmen</span><span class="role-desc">Kayıtlı adınızı seçin; size atanmış özel alana geçin ve bugünkü derslerinizden yoklamayı yönetin.</span></button>
+        <button class="role-card admin-role" data-role="admin"><span class="role-emoji">🛡️</span><span class="role-title">Yönetici</span><span class="role-desc">Okulun öğretmen, öğrenci, sınıf, program, yoklama, duyuru ve raporlarını yönetin.</span></button>
+      </div>
+      <div class="system-foot"><span id="connectionDot" class="dot"></span><span id="connectionText">Bağlantı kontrol ediliyor...</span><span>•</span><span>PWA</span></div>
+    </div>
+  </section>
+
+  <section id="teacherSelect" class="screen">
+    <div class="compact-head"><button class="icon-btn" data-back>←</button><div><div class="eyebrow">ÖĞRETMEN GİRİŞİ</div><h2>Kayıtlı öğretmen adınızı seçin</h2></div></div>
+    <div class="selection-card">
+      <div class="search-box"><span>⌕</span><input id="teacherSearch" placeholder="Öğretmen ara..." autocomplete="off"></div>
+      <div id="teacherChoices" class="choice-grid"></div>
+      <div id="teacherChoiceEmpty" class="empty hidden">Kayıtlı öğretmen bulunamadı.</div>
+    </div>
+  </section>
+
+  <section id="teacherApp" class="screen app-screen">
+    <aside class="sidebar teacher-sidebar">
+      <div class="brand-small"><div class="brand-mark">AO</div><div><strong>Atatürk</strong><span>Ortaokulu</span></div></div>
+      <nav id="teacherNav">
+        <button class="nav-btn active" data-teacher-view="teacherHome">🏠 Ana Sayfa</button>
+        <button class="nav-btn" data-teacher-view="attendance">✅ Yoklama</button>
+        <button class="nav-btn" data-teacher-view="myStudents">👨‍🎓 Öğrenciler</button>
+        <button class="nav-btn" data-teacher-view="mySchedule">🗓️ Ders Programı</button>
+        <button class="nav-btn" data-teacher-view="myHistory">🧾 Geçmiş</button>
+        <button class="nav-btn" data-teacher-view="teacherNotices">📣 Duyurular</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="profile-mini"><span id="teacherAvatar">A</span><div><strong id="teacherNameMini">Öğretmen</strong><small>Aktif</small></div></div><button class="nav-btn" id="teacherExit">↩ Çıkış</button></div>
+    </aside>
+    <main class="content">
+      <header class="topbar"><div><div class="eyebrow">ÖĞRETMEN PANELİ</div><h2 id="teacherPageTitle">Ana Sayfa</h2></div><div class="top-actions"><span class="connection-pill"><span id="teacherDot" class="dot"></span><span id="teacherConnection">Bağlı</span></span><button class="icon-btn">🔔</button></div></header>
+      <div id="teacherHome" class="subview active"></div>
+      <div id="attendance" class="subview"></div>
+      <div id="myStudents" class="subview"></div>
+      <div id="mySchedule" class="subview"></div>
+      <div id="myHistory" class="subview"></div>
+      <div id="teacherNotices" class="subview"></div>
+    </main>
+  </section>
+
+  <section id="adminApp" class="screen app-screen">
+    <aside class="sidebar">
+      <div class="brand-small"><div class="brand-mark">AO</div><div><strong>Atatürk</strong><span>Ortaokulu</span></div></div>
+      <nav id="adminNav">
+        <button class="nav-btn active" data-admin-view="dashboard">🏠 Dashboard</button>
+        <button class="nav-btn" data-admin-view="teachers">👨‍🏫 Öğretmenler</button>
+        <button class="nav-btn" data-admin-view="students">👨‍🎓 Öğrenciler</button>
+        <button class="nav-btn" data-admin-view="classes">🏫 Sınıflar</button>
+        <button class="nav-btn" data-admin-view="subjects">📚 Dersler</button>
+        <button class="nav-btn" data-admin-view="schedule">🗓️ Ders Programı</button>
+        <button class="nav-btn" data-admin-view="adminAttendance">✅ Yoklama</button>
+        <button class="nav-btn" data-admin-view="absences">🔴 Devamsızlık</button>
+        <button class="nav-btn" data-admin-view="announcements">📣 Duyurular</button>
+        <button class="nav-btn" data-admin-view="reports">📊 Raporlar</button>
+        <button class="nav-btn" data-admin-view="logs">🧾 İşlem Geçmişi</button>
+        <button class="nav-btn" data-admin-view="settings">⚙️ Ayarlar</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="profile-mini"><span>Y</span><div><strong>Yönetici</strong><small>Yönetim</small></div></div><button class="nav-btn" id="adminExit">↩ Ana Ekran</button></div>
+    </aside>
+    <main class="content">
+      <header class="topbar"><div><div class="eyebrow">YÖNETİCİ PANELİ</div><h2 id="adminPageTitle">Dashboard</h2></div><div class="top-actions"><span class="connection-pill"><span id="adminDot" class="dot"></span><span id="adminConnection">Bağlı</span></span><button class="icon-btn">🔔</button></div></header>
+      <div id="dashboard" class="subview active"></div><div id="teachers" class="subview"></div><div id="students" class="subview"></div><div id="classes" class="subview"></div><div id="subjects" class="subview"></div><div id="schedule" class="subview"></div><div id="adminAttendance" class="subview"></div><div id="absences" class="subview"></div><div id="announcements" class="subview"></div><div id="reports" class="subview"></div><div id="logs" class="subview"></div><div id="settings" class="subview"></div>
+    </main>
+  </section>
+</div>
+<div id="modalRoot"></div><div id="toast" class="toast"></div>
+<script type="module" src="app.js"></script>
+</body></html>

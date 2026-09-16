@@ -1,0 +1,25 @@
+{
+  "name": "Atatürk Ortaokulu Okul Yönetim Platformu",
+  "short_name": "Atatürk Ortaokulu",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "lang": "tr-TR",
+  "description": "Atatürk Ortaokulu öğretmen, öğrenci, ders programı ve yoklama yönetim platformu.",
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
